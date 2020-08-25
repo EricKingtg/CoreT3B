@@ -15,6 +15,7 @@ import javax.swing.JOptionPane;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Controller;
 
 import com.org.bbb.dto.AccionModulo;
 import com.org.bbb.dto.Perfil;
@@ -24,6 +25,7 @@ import com.org.bbb.dto.Usuario;
 import com.org.bbb.utils.Config;
 import com.org.bbb.utils.FormatoNumero;
 
+@Controller("controladorG")
 public class ControladorG {
 
 	@Autowired
@@ -67,22 +69,25 @@ public class ControladorG {
 			// Class[]{String.class});
 			metodo.setAccessible(true);
 			String salida = (String) metodo.invoke(instancia, new Object[] { "argumento1" });
-
+			System.out.println(salida);
 			metodo.setAccessible(true);
 
 			metodo.invoke(instancia, new Object[] { accion, parametros });
 		} catch (IllegalAccessException ex) {
 			Logger.getLogger(ControladorG.class.getName()).log(Level.SEVERE, null, ex);
+			ex.printStackTrace();
 		} catch (IllegalArgumentException ex) {
 			Logger.getLogger(ControladorG.class.getName()).log(Level.SEVERE, null, ex);
+			ex.printStackTrace();
 		} catch (InvocationTargetException ex) {
 			Logger.getLogger(ControladorG.class.getName()).log(Level.SEVERE, null, ex);
-		} catch (NoSuchMethodException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (SecurityException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			ex.printStackTrace();
+		} catch (NoSuchMethodException ex) {
+			Logger.getLogger(ControladorG.class.getName()).log(Level.SEVERE, null, ex);
+			ex.printStackTrace();
+		} catch (SecurityException ex) {
+			Logger.getLogger(ControladorG.class.getName()).log(Level.SEVERE, null, ex);
+			ex.printStackTrace();
 		}
 
 	}
@@ -300,6 +305,8 @@ public class ControladorG {
 	public void muestraVista() {
 		this.vista.setVisible(true);
 	}
+	
+	
 
 	public ArrayList<PermisoPerfil> getPermisoPerfiles() {
 		return permisoPerfiles;
@@ -331,6 +338,86 @@ public class ControladorG {
 
 	public void setModuloAnterior(Object moduloAnterior) {
 		this.moduloAnterior = moduloAnterior;
+	}
+
+	public Object getcVentas() {
+		return cVentas;
+	}
+
+	public void setcVentas(Object cVentas) {
+		this.cVentas = cVentas;
+	}
+
+	public Object getcLogin() {
+		return cLogin;
+	}
+
+	public void setcLogin(Object cLogin) {
+		this.cLogin = cLogin;
+	}
+
+	public Object getcImpresion() {
+		return cImpresion;
+	}
+
+	public void setcImpresion(Object cImpresion) {
+		this.cImpresion = cImpresion;
+	}
+
+	public Object getcOperaciones() {
+		return cOperaciones;
+	}
+
+	public void setcOperaciones(Object cOperaciones) {
+		this.cOperaciones = cOperaciones;
+	}
+
+	public Object getcTiempoAire() {
+		return cTiempoAire;
+	}
+
+	public void setcTiempoAire(Object cTiempoAire) {
+		this.cTiempoAire = cTiempoAire;
+	}
+
+	public Object getcCardif() {
+		return cCardif;
+	}
+
+	public void setcCardif(Object cCardif) {
+		this.cCardif = cCardif;
+	}
+
+	public HashMap<String, Object> getParams() {
+		return params;
+	}
+
+	public void setParams(HashMap<String, Object> params) {
+		this.params = params;
+	}
+
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
+
+	public Perfil getPerfil() {
+		return perfil;
+	}
+
+	public void setPerfil(Perfil perfil) {
+		this.perfil = perfil;
+	}
+
+	public ArrayList<AccionModulo> getAccionModulos() {
+		return accionModulos;
+	}
+
+	public void setAccionModulos(ArrayList<AccionModulo> accionModulos) {
+		this.accionModulos = accionModulos;
 	}
 
 }
